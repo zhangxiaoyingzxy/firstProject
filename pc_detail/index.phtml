@@ -1,0 +1,513 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>玩游戏_360手机助手111fff</title>
+<link type="text/css" rel="stylesheet" href="/style/game/index.css" media="all">
+<link type="text/css" rel="stylesheet" href="/style/game/pop.css" media="all">
+<script src="http://s0.qhimg.com/lib/jquery/172.js"></script>
+<script type="text/javascript" src="http://s4.qhimg.com/static/16a168855f60c10d.js"></script>
+</head>
+<body>
+<?php
+function getImageBySize ($src, $width, $height) {
+  if (preg_match('/p\d+.qhimg.com/', $src) && strpos($src, 'dm/') === false && strpos($src, 'dr/') === false) {
+    return str_replace('.com/', '.com/dm/'. $width . '_' . $height . '_/', $src);
+  }
+  return $src;
+}
+?>
+<script>
+var defaultId = "1625930";
+var data = <?php echo json_encode($this -> arrList['arrBannerFlashV3']); ?>;
+var jpData = <?php echo json_encode($this->arrList['arrJingPin2']); ?>;
+var xpData = <?php echo json_encode($this->arrList['arrXinPin2']);?>;
+var xyData = <?php echo json_encode($this->arrList['arrXinYou']);?>;
+var netData = <?php echo json_encode($this->arrList['netgame']['test']);?>;
+var banners = <?php echo json_encode($this -> arrList['arrBannerFlashV3']); ?>;
+var bannersPos = '<?php echo $this->arrList['arrPos']['pcFlash']; ?>';
+//var bannersPos = '<?php echo $this->arrList['arrPos']['pcFlash']; ?>';
+</script>
+<div id="doc">
+<div class="giftBox fixRight"></div>
+<!--include:hot-words-->
+<div class="codeZone clearfix">
+	<div class="codeList fl clearfix" id="codeList">
+		<span class="fl">礼包动态：</span>
+	</div>
+	<a class="getCode fl" href="#nogo">我要领取>></a>
+	<a class="codeCenter fr" href="#nogo">礼包中心</a>
+</div>
+<div class="scr1 clearfix">
+	<div class="nslide" id="nslide">
+		<div class="slideCon" id="slideCon"></div>
+		<span class="shd"></span>
+		<div class="slidePnl">
+			<a class="goPre goBtn" href="#nogo"></a>
+			<a class="banner-name" href="#nogo"><span></span></a>
+			<ol class="dot-tab" id="dot-tab">
+	            <li class="cur">1</li>
+	            <li>2</li>
+	            <li>3</li>
+	            <li>4</li>
+	            <li>5</li>
+	            <li>6</li>
+          	</ol>
+          	<a class="goNext goBtn" href="#nogo"></a>
+		</div>
+	</div>
+
+	<div class="playedGame w246 fr">
+		<!-- <h4>打开过的游戏</h4>
+		<dl class="clearfix">
+			<dt>
+				<a class="app-logo" href="#nogo"><img src="http://p18.qhimg.com/t013c8f5838648a63aa.png" alt="" /></a>
+			</dt>
+			<dd>
+				<h3>
+					<a href="#nogo" onclick="App.recBrowse('3203536','I_G_today_star')" title="永夜之帝国双璧">永夜之帝国双...</a>
+				</h3>
+				<p><span class="size">6.2MB</span><span class="category">休闲益智</span><span class="score"><strong>8.3</strong></span></p>
+				<div class="btn-group">
+					<a href="#nogo" class="dbtn 3203536_btn open" onclick="App.open('3203536','永夜之帝国双璧','I_G_today_star')">打开</a>
+					<a href="#nogo" class="dbtn 3203536_btn normal" onclick="App.download('3203536','永夜之帝国双璧','I_G_today_star')">下载</a>
+				</div>
+			</dd>
+		</dl>
+		<a class="allOpenGame" href="#nogo">管理打开过的游戏</a>
+		<span class="ie6cor"></span> -->
+	</div>
+</div>
+<div class="scr2 clearfix bestgame">
+	<div class="ctbar">
+        <h2><a href="#nogo_653" onClick="App.jumpTo('653','hotmore')">游戏<span>精品</span></a></h2>
+    </div>
+    <div class="ctcon" id="con1" rel="container1">
+		    <ul class="sty1 data-filter" data-filter-rule="li/24" style="display:block">
+			 	<?php
+		          $jpData = $this->arrList['arrJingPin2']['23'];
+		          for ($i=0; $i < count($jpData['list']); $i++) {
+		          	//var_dump($jpData['list'][0]);
+		          	$row = $jpData['list'][$i];
+		          	if ($i > 23) continue;
+		          	$item = $row['soft_info'];
+			        $ext = json_decode($item['ext'], true);
+			        if(!$item['soft_id']) continue;
+		          
+		         ?>
+		           	<li data-sid="<?php echo $item['soft_id'];?>" data-sname="<?php echo $item['soft_name'];?>" scard="<?php echo $item['soft_id'];?>">
+		            <a href="#nogo" class="app-logo sicon">
+		              <img <?php echo ($jingpin_index > 0)?'src="/t/s.gif"':'src="'.getImageBySize($item['logo_url'], 120, 120).'"';?> <?php if($jingpin_index > 0) echo '_src="'.getImageBySize($item['logo_url'], 120, 120).'"';?> class="png">
+		            </a>
+		            <div class="detail">
+		              	<span class="sname"><a href="#nogo"><?php echo $item['soft_name'];?></a></span>
+		           		<div class="btn-group">
+		           			<a href="#nogo" class="dbtn subButton open">打开</a>
+		           			<a href="#nogo" class="dbtn <?php echo $item['soft_id'] ?>-btn normal" >下载</a>
+		           		</div>
+		              	
+
+		            </div>
+         
+          			</li>
+		          <?php
+		         }
+	          	?>       
+		</ul>
+    </div>
+</div>
+<div id="hdzq" class="srcoll-img">
+    <div class="srcoll-img-box" id="scl-img"> <a id="prev" href="#nogo" hidefocus="true" data-dir="-1">上一屏</a>
+      <div class="scl-img">
+        <ul>
+          <li>
+    <a href="http://huodong.mobilem.360.cn/html/jianyumofa.html?360appstore=1&amp;from=jymf_0317cp1">
+        <img src="http://p9.qhimg.com/t0127c643063001a162.jpg" alt="">《剑与魔法》下载抽好礼    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/shediao-pcob.html">
+        <img src="http://p7.qhimg.com/t01b2aaee5a0244f8b3.jpg" alt="">《射雕英雄传》送独家好礼    </a>
+</li>
+<li>
+    <a href="http://sqhd.u.360.cn/pchd/160314.html">
+        <img src="http://p6.qhimg.com/t012756c581bb06bd22.jpg" alt="">《天堂战记》首发礼包    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/zhushou/m/pc/qingqiuhu/push.html">
+        <img src="http://p5.qhimg.com/t0101bbfcd273c76bd0.jpg" alt="">《青丘狐传说》下载抽大奖    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/yongye-pc-down.html">
+        <img src="http://p3.qhimg.com/t0184a67e26c11ff7d4.jpg" alt="">《永夜》福利大抽奖    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/zhushou/pc/push.html?360appstore=1">
+        <img src="http://p9.qhimg.com/t017983e579b6da4921.jpg" alt="">《功夫全明星》下载赠好礼    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/sszzl/pc/index.html">
+        <img src="http://p6.qhimg.com/t0170590ad86b1d9fb9.jpg" alt="">《死神斩之灵》周边大放送    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/dmxgw-pc.html?from=mp_dm0128">
+        <img src="http://p8.qhimg.com/t01b0a4be80c4f8f33b.jpg" alt="">《呆萌小怪物》下载抽大奖    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/lhm/pc/index.html">
+        <img src="http://p6.qhimg.com/t015d0e7da6c149f29a.jpg" alt="">《龙虎门》抢精彩好礼    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/txxtx/pc/index.html">
+        <img src="http://p6.qhimg.com/t01dc42a55964a53fc4.jpg" alt="">《天下X天下》下载抽好礼    </a>
+</li>
+<li>
+    <a href="http://sqhd.u.360.cn/aezj0122/index.html?360appstore=1">
+        <img src="http://p5.qhimg.com/t01f23fe93b3574ae3e.jpg" alt="">《艾尔战记》红包送不停    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/gdjz/pc/160126.html">
+        <img src="http://p2.qhimg.com/t01fe517fac7993d422.jpg" alt="">《奥特曼系列》踩楼赢好礼    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/zzx-wlswz-pc.html?from=mp_zzxtree">
+        <img src="http://p5.qhimg.com/t01037b36ed1fd1e348.jpg" alt="">《猪猪侠》下载抢好礼    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/xdldl/160119.html">
+        <img src="http://p2.qhimg.com/t01c24f301c2fa8e9c1.jpg" alt="">《新斗罗大陆》下载抽好礼    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/m/tiantianyouxi/pc.html?360appstore=1&amp;from=mp_ttyx0121">
+        <img src="http://p0.qhimg.com/t0173aaabdbeda7c01c.jpg" alt="">《天天有喜》领紫宠套装    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/zhushou/pc/taijixiongmao2/pc.html">
+        <img src="http://p7.qhimg.com/t01e5eb6150e1b6f28a.jpg" alt="">《太极熊猫2》疯抢好礼    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/hhw/pc/160107.html">
+        <img src="http://p8.qhimg.com/t016938e516aa2c6a32.jpg" alt="">《航海王》下载抽大奖    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/wdqk/160113.html">
+        <img src="http://p5.qhimg.com/t013dde90fdf2df6393.jpg" alt="">《武动乾坤》下载抽好礼    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/gfxm/pc/160113.html?from=mp_gfxm0118">
+        <img src="http://p5.qhimg.com/t012bb0e4cf713ebb8d.jpg" alt="">《功夫熊猫3》下载抽好礼    </a>
+</li>
+<li>
+    <a href="http://huodong.mobilem.360.cn/html/gdjz/pc/160108.html">
+        <img src="http://p8.qhimg.com/t0122b3ab82303bad68.jpg" alt="">《敢达决战》抢限量模型    </a>
+</li>
+
+        </ul>
+      </div>
+      <a id="next" href="#nogo" hidefocus="true" data-dir="1">下一屏</a> </div>
+  </div>
+<div class="scr2 clearfix latestgame">
+	<div class="ctbar">
+        <h2><a href="#nogo_653" onClick="App.jumpTo('653','hotmore')">新品<span>速递</span></a></h2>
+    </div>
+    <div class="ctcon" id="con1" rel="container1">
+		    <ul class="sty1 data-filter" data-filter-rule="li/24" style="display:block">          
+		    	<?php
+		    	for ($i=0; $i<count($this->arrList['arrXinPin2']); $i++) {
+		    		$item= $this->arrList['arrXinPin2'][$i];
+		    		$soft_info = $item['soft_info'];
+		    		?>
+		    		<li data-sid="<?php echo $item['soft_id'];?>" data-name="<?php echo $soft_info['soft_name'];?>">
+		    			<a href="#nogo" class="app-logo sicon">
+		              		<img src="<?php echo getImageBySize($soft_info['logo_url'], 85, 85);?>" class="png">
+			            </a>
+			            <div class="detail">
+			              	<span class="sname"><a href="#nogo"><?php echo $soft_info['soft_name'];?></a></span>
+			           		<div class="btn-group">
+			           			<a href="#nogo" class="dbtn subButton open">打开</a>
+			           			<a href="#nogo" class="dbtn <?php echo $item['soft_id'] ?>-btn normal" >下载</a>
+			           		</div>
+			            </div>
+		    		</li>
+		    	<?php } ?>
+			</ul>
+    </div>
+</div>
+<div class="v-bnr"><style>
+    .v-bnr { margin:10px; padding-bottom:3px; text-align:center; position:relative; height:125px; overflow:hidden; }
+    .v-bnr img { position: absolute; left: 50%; margin-left: -496px; top: 0; width:992px; height:125px;}
+</style>
+<a href="http://zsall.mobilem.360.cn/html/girl/index.html"><img src="http://p6.qhimg.com/t0148af099952f3326c.png"></a>
+</div>
+<div id="wyzq" class="scr2 clearfix">
+    <div class="fl w536">
+      	<div class="ctbar">
+        	<h2><a href="#nogo_onlinemore_653" onclick="App.jumpTo('653|http://zsall.mobilem.360.cn/list/index/cid/100451/','onlinemore')">新游<span>专区</span></a></h2>
+        </div>
+        <div class="ctcon" id="con1" rel="container1">
+        	<ul class="sty1 data-filter" data-filter-rule="li/24" style="display:block">          
+		    	<?php
+		    	for ($i=0; $i<count($this->arrList['arrXinYou']); $i++) {
+		    		$item= $this->arrList['arrXinYou'][$i];
+		    		$soft_info = $item['soft_info'];
+		    		?>
+		    		<li data-sid="<?php echo $item['soft_id'];?>" data-name="<?php echo $soft_info['soft_name'];?>">
+		    			<a href="#nogo" class="app-logo sicon">
+		              		<img src="<?php echo getImageBySize($soft_info['logo_url'], 85, 85);?>" class="png">
+			            </a>
+			            <div class="detail">
+			              	<span class="sname"><a href="#nogo"><?php echo $soft_info['soft_name'];?></a></span>
+			           		<div class="btn-group">
+			           			<a href="#nogo" class="dbtn subButton open">打开</a>
+			           			<a href="#nogo" class="dbtn <?php echo $item['soft_id'] ?>-btn normal" >下载</a>
+			           		</div>
+			            </div>
+		    		</li>
+		    	<?php } ?>
+			</ul>
+        </div>
+    </div>
+    <div class="w246 wyTable fr">
+    	<h4>手机网游<span>开测表</span></h4>
+    	<table>
+    		<thead>
+    			<tr>
+    				<th>时间</th>
+    				<th>网游</th>
+    				<th>状态</th>
+    				<th>礼包</th>
+    				<th>下载</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<?php
+		    	for ($i=0; $i<count($this->arrList['netgame']['test']); $i++) {
+		    		$item= $this->arrList['netgame']['test'][$i];
+		    		?>
+		    		<tr data-sid="<?php echo $item['soft_id'];?>" data-name="<?php echo $item['soft_name'];?>">
+		    			<td class='<?php if($i==0 || $i==1 || $i==2) echo "orange";?>'><span class="time"><?php echo $item['start_time'];?></span></td>
+	    				<td><span><?php echo $item['soft_name'];?></span></td>
+	    				<td><span><?php echo $item['power_type'];?></span></td>
+	    				<td class="gift"><a href="#nogo">礼包</a></td>
+	    				<td class="download"><a href="#nogo" class="<?php echo $item['soft_id'] ?>-btn normal">下载</a></td>
+		    		</tr>
+		    	<?php } ?>
+    		</tbody>
+    	</table>
+    </div>
+</div>
+<!--include:rank-block-->
+<div class="gameCenter game">
+	<h2><span><strong>游戏题材</strong>GAME GENRE</span></h2>
+	<div class="gameContainer clearfix">
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span style="margin-right: 0;">养成</span></a>
+</div>
+<div class="gamePlay game">
+	<h2><span><strong>游戏玩法</strong>GAME PLAY</span></h2>
+	<div class="gameContainer clearfix">
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span>养成</span></a>
+			<a href="#nogo"><span style="margin-right: 0;">养成</span></a>
+	</div>
+</div>
+<script type="text/template" id="game-item">
+	<h4>打开过的游戏</h4>
+		<dl class="clearfix" data-sid="{{soft_id}}" data-sname="{{soft_name}}">
+			<dt>
+				<a class="app-logo" href="#nogo"><img src="{{logo_url}}" alt="" /></a>
+			</dt>
+			<dd>
+				<h3 class="sname">
+					<a href="#nogo"  title="{{soft_name}}">{{soft_name}}</a>
+				</h3>
+				<p><span class="size">{{apk_sizes}}</span><span class="category">{{tag_key_words}}</span><span class="score"><strong>{{vote_scores}}</strong>分</span></p>
+				<div class="btn-group">
+					<a href="#nogo" class="dbtn {{soft_id}}_btn open" onclick="#nogo">打开</a>
+					<a href="#nogo" class="dbtn {{soft_id}}_btn normal" onclick="#nogo">下载</a>
+				</div>
+			</dd>
+		</dl>
+		<a class="allOpenGame" href="http://www.yiwanzhushou.com/dating/zhushouindex5.html">管理打开过的游戏</a>
+		<span class="ie6cor"></span>
+</script>
+<div class="mask"></div>
+<div class="popup"></div>
+<script type="text/template" id="popup-template">
+    <div class="popup-header">
+        <span>温馨提示</span>
+        <a class="btn-close" href="#closepopup">&times;</a>
+    </div>
+    {{#title}}<div class="popup-title">{{title}}</div>{{/title}}
+
+    <div class="popup-content">
+        {{#code}}
+        	<p class="code">{{code}}</p>
+        	<p class="use-method">{{useage}}</p>
+        {{/code}}
+        {{^code}}
+        <table>
+        {{#lists}}
+            <tr class="code-item" data-aid="{{game_comm_id}}" data-useage="{{useage}}">
+                <td class="codeName">{{name}}</td><td class="getCodeNow"><a href="#nogo">立即领取</a></td>
+            </tr>
+        {{/lists}}
+        </table>
+        {{/code}}
+        {{#allCode}}
+        	<dl class="clearfix code-item" data-aid="{{game_id}}" data-useage="{{useage}}">
+				<dt>
+					<a class="app-logo" href="#nogo"><img src="{{logo_url}}" alt=""></a>
+				</dt>
+				<dd>
+					<h3>
+						<a href="#nogo" title="{{soft_name2}}">{{soft_name2}}</a>
+						<span>{{play_time}}</span>
+					</h3>
+					<p>{{soft_name}}</p>
+					<a class="getcode yellow" href="#nogo">领取</a>
+				</dd>
+			</dl>
+        {{/allCode}}
+    </div>
+
+    <div class="popup-command">
+        {{#more}}<a class="popup-button btn-more" href="#more">加载更多</a>{{/more}}
+    </div>
+</script>
+<script src="/script/game/zsclient.js"></script>
+<script src="http://s9.qhimg.com/!02c740f2/mustache.0.7.2.js"></script>
+<script src="/script/game/game.js"></script>
+<script src="http://s5.qhimg.com/!bc53ac9d/getcode.js"></script>
+<script>
+	var marqueeInterval=new Array();
+	var marqueeId=0;
+	var marqueeDelay=2000;
+	var marqueeHeight=18;
+	function initMarquee(str) {
+		var marqueeContainer = document.getElementById('codeList');
+        var line = document.createElement('DIV');
+        	line.innerHTML = '<div id="marqueeBox" style="overflow:hidden;float: left;height:'+marqueeHeight+'px" onmouseover="clearInterval(marqueeInterval[0])" onmouseout="marqueeInterval[0]=setInterval(\'startMarquee()\',marqueeDelay)"><div>'+str+'</div></div>';
+        marqueeContainer.appendChild(line);
+	 	marqueeId++;
+	 	marqueeInterval[0]=setInterval("startMarquee()",marqueeDelay);
+	}
+	function startMarquee() {
+		var str=marqueeContent[marqueeId];
+	 	marqueeId++;
+	 	if(marqueeId>=marqueeContent.length) marqueeId=0;
+	 	if(document.getElementById("marqueeBox").childNodes.length==1) {
+		 	var nextLine=document.createElement('DIV');
+		 	nextLine.innerHTML=str;
+		 	document.getElementById("marqueeBox").appendChild(nextLine);
+		}
+		else {
+		  	document.getElementById("marqueeBox").childNodes[0].innerHTML=str;
+		  	document.getElementById("marqueeBox").appendChild(document.getElementById("marqueeBox").childNodes[0]);
+		  	document.getElementById("marqueeBox").scrollTop=0;
+	 	}
+	 	clearInterval(marqueeInterval[1]);
+	 	marqueeInterval[1]=setInterval("scrollMarquee()",20);
+	}
+	function scrollMarquee() {https://github.com/zhangxiaoyingzxy/test1
+	 	document.getElementById("marqueeBox").scrollTop++;
+	}
+	$('.getCode').on('mouseover',function() {
+		clearInterval(marqueeInterval[0]);
+	});
+	
+	$('.getCode').on('mouseout',function() {
+		marqueeInterval[0]=setInterval('startMarquee()',marqueeDelay);
+	})
+</script>
+<!--热门资源位弹窗-->
+<script type="text/javascript">
+	var StatusText = {
+        'normal': '下载游戏',
+        'installed': '已安装',
+        'update': '升级',
+        'downloading': '下载中',
+        'installing': '安装中',
+        'retry': '重试'
+    };
+
+    window.latestgames = {
+    	'sids': ''
+    };
+    zs.on('status', function(sid, status) {
+    	status = status[sid];
+    	$('#doc').append('<span>'+sid+'</span>');
+        
+        $('.' + sid + '-btn').text(StatusText[status.text]);
+    });
+    function renderLatestGame(sid) {
+    	$.ajax({
+    		'type': 'GET',
+    		'url': 'http://test.zsall.mobilem.360.cn/detail/getAppsByIds?ids=' + sid,
+    		'dataType': 'json',
+    		'cache': false,
+    		'success': function(response) {
+    			//console.log(response[0]);
+    			//渲染最近玩过的游戏
+    			var data = response[0];
+    			for (var key in data) {
+    				if (key == 'tag_key_words') {
+    					singleData[key] = data[key].split(' ')[0];
+    				} else if (key == 'apk_sizes') {
+    					singleData[key] = zs.util.formatSize(data[key]);
+    				} else {
+    					singleData[key] = data[key];
+    				}
+    			}
+    			var gameTemplate = $('#game-item').html();
+    			$('.playedGame').html(Mustache.render(gameTemplate, singleData));
+    		}
+    	});
+    };
+
+    //用户最近打开过的三款游戏
+    zs.on('games:default', function (status) {
+
+    	var curDay = (new Date).getDate();
+    	var index = 0;
+    	var keyArr = [];
+    	if(!status) {
+    		renderLatestGame(defaultId);
+    	} else {
+    		window.gameStatus = {'1625930':86400,'3203449':172800,'2720322':172800}
+    		for (var sid in gameStatus) {
+	           	var playDay = new Date(gameStatus[sid]).getDate();
+	            var difDay = curDay - playDay;
+	            if(difDay == 0) {
+	            	var value = '今天玩过'
+	            } else {
+	            	var value = difDay + '天前玩过'
+	            }
+	            latestgames[sid] = value;
+	            keyArr.push(sid);
+	            index++; 
+	            var singleData = {};
+	            if(index == 2) {
+	            	//根据sid获取相关游戏信息
+	            	renderLatestGame(sid);
+	            }
+        	}
+        	latestgames['sids'] = keyArr.join(',');
+    	}
+    });
+</script>
+</body>
+</html>
